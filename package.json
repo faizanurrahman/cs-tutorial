@@ -6,13 +6,19 @@
     "node": ">=20.19.1"
   },
   "scripts": {
-    "ng": "ng",
+    "start": "vite",
     "dev": "vite",
-    "start": "npm run dev",
-    "build": "vite build",
-    "watch": "vite build --watch",
+    "build": "NODE_OPTIONS='--max-old-space-size=4096' vite build",
+    "preview": "vite preview",
     "test": "vitest",
-    "preview": "node dist/analog/server/index.mjs"
+    "lint": "eslint src --ext .ts",
+    "format": "prettier --write \"src/**/*.{ts,html,css,scss}\"",
+    "generate:sitemap": "tsx scripts/generate-sitemap.ts",
+    "analyze": "vite build --mode analyze",
+    "lighthouse": "lighthouse http://localhost:4200 --view --output html --output-path ./lighthouse-report.html",
+    "prerender": "npm run build && node dist/analog/server/index.mjs",
+    "deploy:vercel": "vercel --prod",
+    "deploy:netlify": "netlify deploy --prod"
   },
   "private": true,
   "dependencies": {
@@ -27,16 +33,30 @@
     "@angular/platform-server": "^21.0.0",
     "@angular/router": "^21.0.0",
     "@tailwindcss/vite": "^4.1.4",
+    "@vscode/l10n": "^0.0.18",
     "front-matter": "^4.0.2",
+    "katex": "^0.16.28",
     "marked": "^15.0.7",
     "marked-gfm-heading-id": "^4.1.1",
     "marked-highlight": "^2.2.1",
     "marked-mangle": "^1.1.10",
+    "mermaid": "^11.12.2",
+    "monaco-editor": "^0.55.1",
     "postcss": "^8.5.3",
     "prismjs": "^1.29.0",
+    "rehype-katex": "^7.0.1",
+    "rehype-sanitize": "^6.0.0",
+    "rehype-stringify": "^10.0.1",
+    "remark-directive": "^4.0.0",
+    "remark-gfm": "^4.0.1",
+    "remark-math": "^6.0.0",
+    "remark-parse": "^11.0.0",
+    "remark-rehype": "^11.1.2",
     "rxjs": "~7.8.0",
     "tailwindcss": "^4.1.4",
-    "tslib": "^2.3.0"
+    "tslib": "^2.3.0",
+    "unified": "^11.0.5",
+    "unist-util-visit": "^5.1.0"
   },
   "devDependencies": {
     "@analogjs/platform": "^2.2.3",
@@ -45,9 +65,11 @@
     "@angular/build": "^21.0.0",
     "@angular/cli": "^21.0.0",
     "@angular/compiler-cli": "^21.0.0",
+    "@types/node": "^25.2.3",
     "jsdom": "^22.0.0",
     "typescript": "~5.9.0",
     "vite": "^7.0.0",
+    "vite-plugin-compression": "^0.5.1",
     "vite-tsconfig-paths": "^4.2.0",
     "vitest": "^4.0.0"
   }

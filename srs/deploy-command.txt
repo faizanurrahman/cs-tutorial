@@ -1,0 +1,23 @@
+# 1. Install dependencies
+npm install
+
+# 2. Generate sitemap
+npm run generate:sitemap
+
+# 3. Build for production
+npm run build
+
+# 4. Analyze bundle size (optional)
+npm run analyze
+
+# 5. Test locally
+npm run preview
+
+# 6. Deploy to Vercel
+npm run deploy:vercel
+
+# OR Deploy to Netlify
+npm run deploy:netlify
+
+# 7. Run Lighthouse audit (after deploy)
+npm run lighthouse

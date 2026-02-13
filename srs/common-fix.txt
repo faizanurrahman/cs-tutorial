@@ -1,0 +1,18 @@
+🐛 COMMON ISSUES & FIXES
+Issue 1: Tree nodes overlapping
+Solution: Adjust xOffset calculation in calculatePositions():
+
+typescript
+// Increase spacing
+this.calculatePositions(node.left, level + 1, x - xOffset, y + 100, xOffset / 1.5, result);
+Issue 2: Components not rendering in markdown
+Solution: Ensure all DSA components imported in [...slug].page.ts and add not-prose class
+
+Issue 3: Pointers not displaying
+Solution: Check pointer array format:
+
+typescript
+[pointers]="[{ name: 'left', index: 0, color: '#3b82f6' }]"
+Issue 4: Stack/Queue overflow on mobile
+Solution: Add horizontal scroll to queue container
+
