@@ -5,10 +5,12 @@ import { Component, computed, input } from '@angular/core';
   selector: 'app-uml-card',
   standalone: true,
   imports: [],
+  host: {
+    class:
+      'block my-8 not-prose border-2 border-gray-800 dark:border-gray-300 bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow w-fit',
+  },
   template: `
-    <div
-      class="not-prose inline-block my-6 border-2 border-gray-800 dark:border-gray-300 bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow"
-    >
+    <div>
       <!-- Class Name Header -->
       <div [class]="headerClasses()">
         <h4 class="font-mono font-bold text-lg text-center">
@@ -64,13 +66,7 @@ import { Component, computed, input } from '@angular/core';
       </div>
     </div>
   `,
-  styles: [
-    `
-      :host {
-        display: inline-block;
-      }
-    `,
-  ],
+  styles: [],
 })
 export class UmlCardComponent {
   name = input('ClassName');

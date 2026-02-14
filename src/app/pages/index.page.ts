@@ -1,14 +1,13 @@
-
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { MainLayoutComponent } from '../components/layout/main-layout/main-layout.component';
+import { LandingLayoutComponent } from '../components/layout/landing-layout/landing-layout.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [RouterModule, MainLayoutComponent],
+  imports: [RouterModule, LandingLayoutComponent],
   template: `
-    <app-main-layout>
+    <app-landing-layout>
       <!-- Hero Section -->
       <div class="text-center py-16">
         <h1 class="text-5xl font-bold text-gray-900 dark:text-white mb-6">
@@ -23,7 +22,7 @@ import { MainLayoutComponent } from '../components/layout/main-layout/main-layou
 
         <div class="flex flex-wrap justify-center gap-4">
           <a
-            routerLink="/1-oop/index"
+            routerLink="/oop"
             class="px-6 py-3 bg-brand-500 hover:bg-brand-600 text-white
                     rounded-lg font-medium transition-colors"
           >
@@ -147,7 +146,7 @@ import { MainLayoutComponent } from '../components/layout/main-layout/main-layou
           </p>
         </div>
       </div>
-    </app-main-layout>
+    </app-landing-layout>
   `,
 })
 export default class HomePageComponent {}

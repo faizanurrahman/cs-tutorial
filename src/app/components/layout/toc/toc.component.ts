@@ -7,27 +7,45 @@ import { TocHeading } from '../../../models/nav-item.model';
   standalone: true,
   imports: [],
   template: `
-    <div class="p-6 sticky top-20">
+    <div
+      class="relative p-6 sticky top-20 min-h-[200px]
+             bg-white/80 dark:bg-slate-900/30 border-l border-slate-200 dark:border-white/5
+             dark:backdrop-blur-xl"
+      style="mask-image: linear-gradient(180deg, transparent 0%, black 8%, black 92%, transparent 100%); -webkit-mask-image: linear-gradient(180deg, transparent 0%, black 8%, black 92%, transparent 100%);"
+    >
+      <!-- Masked gradient line -->
+      <div
+        class="absolute left-0 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-slate-200 dark:via-white/10 to-transparent"
+        aria-hidden="true"
+      ></div>
+
       <h3
-        class="text-xs font-bold uppercase text-gray-500 dark:text-gray-400 mb-4 tracking-wider"
+        class="text-xs font-bold uppercase text-slate-500 dark:text-slate-400 mb-4 tracking-wider"
       >
         On This Page
       </h3>
 
       @if (headings().length > 0) {
-        <ul class="space-y-2">
+        <ul class="space-y-1 relative">
           @for (heading of headings(); track heading.id) {
-            <li [class.ml-4]="heading.level === 3">
+            <li [class.ml-4]="heading.level === 3" class="relative">
               <a
                 [href]="'#' + heading.id"
                 (click)="scrollToHeading($event, heading.id)"
-                [class.text-brand-600]="heading.active"
-                [class.dark:text-brand-400]="heading.active"
+                class="block text-sm py-2 px-3 -mx-3 rounded-r-md border-l-2 transition-all duration-200 leading-relaxed"
+                [class.border-indigo-500]="heading.active"
+                [class.bg-indigo-50]="heading.active"
+                [class.text-indigo-700]="heading.active"
+                [class.dark:bg-indigo-500/10]="heading.active"
+                [class.dark:text-indigo-300]="heading.active"
                 [class.font-medium]="heading.active"
-                [class.text-gray-600]="!heading.active"
-                [class.dark:text-gray-400]="!heading.active"
-                class="block text-sm hover:text-brand-600 dark:hover:text-brand-400
-                       transition-colors leading-relaxed"
+                [class.border-transparent]="!heading.active"
+                [class.text-slate-600]="!heading.active"
+                [class.hover:bg-slate-50]="!heading.active"
+                [class.hover:text-slate-900]="!heading.active"
+                [class.dark:text-slate-400]="!heading.active"
+                [class.dark:hover:bg-white/5]="!heading.active"
+                [class.dark:hover:text-slate-300]="!heading.active"
               >
                 {{ heading.text }}
               </a>
@@ -35,7 +53,7 @@ import { TocHeading } from '../../../models/nav-item.model';
           }
         </ul>
       } @else {
-        <p class="text-sm text-gray-400 dark:text-gray-500 italic">
+        <p class="text-sm text-slate-500 italic">
           No headings found
         </p>
       }

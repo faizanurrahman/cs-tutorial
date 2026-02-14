@@ -41,9 +41,9 @@ export class PerformanceInterceptor implements HttpInterceptor {
   }
 
   private reportPerformance(url: string, duration: number) {
-    // Report to analytics service
-    if (typeof window !== 'undefined' && window.gtag) {
-      window.gtag('event', 'timing_complete', {
+    const win = typeof window !== 'undefined' ? (window as unknown as { gtag?: (a: string, b: string, c: object) => void }) : null;
+    if (win?.gtag) {
+      win.gtag('event', 'timing_complete', {
         name: 'api_request',
         value: Math.round(duration),
         event_category: 'API',

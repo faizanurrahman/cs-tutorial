@@ -5,7 +5,9 @@ import {
   trigger,
 } from '@angular/animations';
 import { Component, inject } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
 import { NavigationService } from '../../../services/navigation.service';
+import { BreadcrumbsComponent } from '../breadcrumbs/breadcrumbs.component';
 import { MobileMenuComponent } from '../mobile-menu/mobile-menu.component';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { SidebarComponent } from '../sidebar/sidebar.component';
@@ -15,13 +17,15 @@ import { TocComponent } from '../toc/toc.component';
   selector: 'app-main-layout',
   standalone: true,
   imports: [
+    RouterOutlet,
+    BreadcrumbsComponent,
     NavbarComponent,
     SidebarComponent,
     TocComponent,
     MobileMenuComponent
 ],
   template: `
-    <div class="min-h-screen bg-surface-canvas text-surface-text">
+    <div class="min-h-screen bg-white dark:bg-slate-950 text-gray-900 dark:text-slate-100">
       <!-- Top Navbar -->
       <app-navbar />
 
@@ -33,23 +37,23 @@ import { TocComponent } from '../toc/toc.component';
         <!-- Left Sidebar (Desktop) -->
         <aside
           class="hidden lg:block w-[280px] sticky top-16 h-[calc(100vh-4rem)]
-                 overflow-y-auto border-r border-gray-200 dark:border-gray-700"
+                 overflow-y-auto border-r border-gray-200 dark:border-white/5 bg-gray-50 dark:bg-slate-900/50 dark:backdrop-blur-xl"
         >
           <app-sidebar />
         </aside>
 
-        <!-- Main Content Area -->
-        <main class="flex-1 min-w-0 px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
-          <article class="max-w-[900px] mx-auto">
-            <!-- Content projected from page component -->
-            <ng-content />
-          </article>
+        <!-- Main Content Area (wider max for cinematic hero) -->
+        <main class="flex-1 min-w-0 px-4 sm:px-6 lg:px-8 py-8 lg:py-12 bg-white dark:bg-slate-950">
+          <div class="max-w-5xl mx-auto text-gray-900 dark:text-slate-100">
+            <app-breadcrumbs />
+            <router-outlet />
+          </div>
         </main>
 
         <!-- Right TOC (Desktop XL) -->
         <aside
           class="hidden xl:block w-[240px] sticky top-16 h-[calc(100vh-4rem)]
-                 overflow-y-auto border-l border-gray-200 dark:border-gray-700"
+                 overflow-y-auto border-l border-gray-200 dark:border-white/5 bg-gray-50 dark:bg-slate-900/50 dark:backdrop-blur-xl"
         >
           <app-toc />
         </aside>
@@ -59,7 +63,7 @@ import { TocComponent } from '../toc/toc.component';
       @if (navService.mobileMenuOpen()) {
         <div
           (click)="navService.closeMobileMenu()"
-          class="fixed inset-0 bg-black/50 z-40 lg:hidden"
+          class="fixed inset-0 bg-black/50 z-40 lg:hidden dark:bg-black/50"
           [@fadeIn]
         ></div>
       }

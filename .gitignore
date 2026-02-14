@@ -5,11 +5,24 @@
 /tmp
 /out-tsc
 /bazel-out
+*.tsbuildinfo
 
 # Node
 /node_modules
-npm-debug.log
+npm-debug.log*
 yarn-error.log
+yarn-debug.log*
+pnpm-debug.log*
+.pnpm-store
+
+# Build / tool caches
+/.angular/cache
+/.nx/cache
+/.nx/workspace-data
+.vite
+.turbo
+.cache
+.sass-cache/
 
 # IDEs and editors
 .idea/
@@ -26,22 +39,33 @@ yarn-error.log
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
-.history/*
+.history/
 
 # Miscellaneous
-/.angular/cache
-/.nx/cache
-/.nx/workspace-data
-.sass-cache/
 /connect.lock
 /coverage
 /libpeerconnection.log
 testem.log
 /typings
+*.log
+/logs
 
 # System files
 .DS_Store
 Thumbs.db
+*.swp
+*~
 
-# Environment files
-.env*
+# Environment and secrets
+.env
+.env.*
+!.env.example
+
+# Deploy / hosting
+.vercel
+.netlify
+
+# Reports and dumps
+codebase-dump.txt
+lighthouse-report.html
+*.lighthouse.html

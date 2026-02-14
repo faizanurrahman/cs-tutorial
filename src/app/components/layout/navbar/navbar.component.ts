@@ -76,7 +76,7 @@ import { ThemeService } from '../../../services/theme.service';
           <!-- Center: Desktop Navigation -->
           <div class="hidden md:flex items-center gap-6">
             <a
-              routerLink="/1-oop/index"
+              routerLink="/oop"
               routerLinkActive="text-brand-600 dark:text-brand-400"
               class="text-sm font-medium text-gray-700 dark:text-gray-300
                       hover:text-brand-600 dark:hover:text-brand-400 transition-colors"
@@ -84,7 +84,7 @@ import { ThemeService } from '../../../services/theme.service';
               OOP
             </a>
             <a
-              routerLink="/2-dsa/1-arrays/intro"
+              routerLink="/dsa/arrays/intro"
               routerLinkActive="text-brand-600 dark:text-brand-400"
               class="text-sm font-medium text-gray-700 dark:text-gray-300
                       hover:text-brand-600 dark:hover:text-brand-400 transition-colors"
@@ -92,20 +92,12 @@ import { ThemeService } from '../../../services/theme.service';
               Data Structures
             </a>
             <a
-              routerLink="/2-dsa/1-arrays/intro"
+              routerLink="/dsa/arrays/intro"
               routerLinkActive="text-brand-600 dark:text-brand-400"
               class="text-sm font-medium text-gray-700 dark:text-gray-300
                       hover:text-brand-600 dark:hover:text-brand-400 transition-colors"
             >
               Algorithms
-            </a>
-            <a
-              routerLink="/4-system-design/index"
-              routerLinkActive="text-brand-600 dark:text-brand-400"
-              class="text-sm font-medium text-gray-700 dark:text-gray-300
-                      hover:text-brand-600 dark:hover:text-brand-400 transition-colors"
-            >
-              System Design
             </a>
           </div>
 

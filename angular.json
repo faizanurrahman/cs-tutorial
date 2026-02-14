@@ -15,44 +15,64 @@
       },
       "architect": {
         "build": {
-          "builder": "@analogjs/platform:vite",
+          "builder": "@angular/build:application",
           "options": {
-            "configFile": "vite.config.ts",
-            "main": "src/main.ts",
             "outputPath": "dist/client",
-            "tsConfig": "tsconfig.app.json"
+            "index": "index.html",
+            "browser": "src/main.ts",
+            "polyfills": ["zone.js"],
+            "tsConfig": "tsconfig.app.json",
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "public",
+                "output": "/"
+              }
+            ],
+            "loader": {
+              ".java": "text",
+              ".py": "text"
+            },
+            "styles": ["src/styles.css"],
+            "scripts": [],
+            "externalDependencies": ["monaco-editor"]
           },
           "defaultConfiguration": "production",
           "configurations": {
             "development": {
-              "mode": "development"
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true
             },
             "production": {
-              "sourcemap": false,
-              "mode": "production"
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kB",
+                  "maximumError": "2MB"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kB",
+                  "maximumError": "4kB"
+                }
+              ],
+              "outputHashing": "all"
             }
           }
         },
         "serve": {
-          "builder": "@analogjs/platform:vite-dev-server",
-          "defaultConfiguration": "development",
-          "options": {
-            "buildTarget": "my-app:build",
-            "port": 5173
-          },
+          "builder": "@angular/build:dev-server",
           "configurations": {
             "development": {
-              "buildTarget": "my-app:build:development",
-              "hmr": true
+              "buildTarget": "my-app:build:development"
             },
             "production": {
               "buildTarget": "my-app:build:production"
             }
-          }
+          },
+          "defaultConfiguration": "development"
         },
-        "test": {
-          "builder": "@analogjs/vitest-angular:test"
-        }
       }
     }
   }

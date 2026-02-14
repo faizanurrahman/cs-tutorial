@@ -1,7 +1,11 @@
 @config '../tailwind.config.js';
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
+@source "./app";
 
-/* Dark mode variables */
+@import "prismjs/themes/prism.css";
+
+/* Dark mode variables - used when Tailwind's dark: isn't sufficient */
 @layer base {
   :root {
     --color-surface-canvas: #ffffff;
@@ -9,7 +13,7 @@
   }
 
   .dark {
-    --color-surface-canvas: #1f2937;
+    --color-surface-canvas: #111827;
     --color-surface-text: #f9fafb;
   }
 }
@@ -21,7 +25,17 @@
   }
 
   body {
-    @apply bg-surface-canvas text-surface-text;
+    @apply antialiased font-sans;
+    background-color: var(--color-surface-canvas);
+    color: var(--color-surface-text);
+  }
+
+  .dark body {
+    @apply bg-slate-950 text-slate-300;
+  }
+
+  *::selection {
+    @apply bg-indigo-500/30 text-indigo-200;
   }
 }
 
@@ -52,5 +66,23 @@
 @layer components {
   pre code {
     @apply block overflow-x-auto p-4;
+  }
+}
+
+/* Prose: light (default) + dark theme overrides */
+@layer components {
+  .prose pre {
+    background-color: #f6f8fa;
+  }
+
+  .dark .prose {
+    --tw-prose-body: #cbd5e1;
+    --tw-prose-headings: #ffffff;
+    --tw-prose-links: #22d3ee;
+    --tw-prose-code: #a855f7;
+  }
+
+  .dark .prose pre {
+    background-color: #0f172a;
   }
 }

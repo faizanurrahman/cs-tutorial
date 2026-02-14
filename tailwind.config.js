@@ -13,6 +13,17 @@ module.exports = {
           800: "#3730a3",
           900: "#312e81",
         },
+        canvas: {
+          DEFAULT: "#0f172a",
+          card: "#1e293b",
+          border: "#334155",
+        },
+        neon: {
+          cyan: "#22d3ee",
+          purple: "#a855f7",
+          orange: "#fb923c",
+          green: "#4ade80",
+        },
         logic: {
           address: "#3b82f6",
           value: "#10b981",
@@ -27,15 +38,39 @@ module.exports = {
         },
         surface: {
           canvas: "#ffffff",
+          "canvas-dark": "#111827",
           sidebar: "#f8fafc",
-          code: "#1e293b",
+          "sidebar-dark": "#1f2937",
+          code: "#f1f5f9",
+          "code-dark": "#0f172a",
           text: "#0f172a",
+          "text-dark": "#f9fafb",
           muted: "#64748b",
+          "muted-dark": "#9ca3af",
+        },
+        slate: {
+          850: "#1e293b",
+          950: "#020617",
         },
       },
       fontFamily: {
         sans: ["Inter", "sans-serif"],
+        display: ["Inter Tight", "system-ui", "sans-serif"],
         mono: ["JetBrains Mono", "monospace"],
+      },
+      animation: {
+        "pulse-slow":
+          "pulse 6s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+        shimmer: "shimmer 2s linear infinite",
+      },
+      keyframes: {
+        shimmer: {
+          from: { backgroundPosition: "0 0" },
+          to: { backgroundPosition: "-200% 0" },
+        },
+      },
+      backgroundImage: {
+        "grid-white": `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='32' height='32' fill='none' stroke='rgb(255 255 255 / 0.05)'%3e%3cpath d='M0 .5H31.5V32'/%3e%3c/svg%3e")`,
       },
       typography: {
         DEFAULT: {
@@ -53,7 +88,5 @@ module.exports = {
       },
     },
   },
-  plugins: [
-    // require('@tailwindcss/typography'),
-  ],
+  plugins: [require("@tailwindcss/typography")],
 };
