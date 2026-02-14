@@ -51,9 +51,9 @@ jobs:
         uses: treosh/lighthouse-ci-action@v9
         with:
           urls: |
-            https://devmastery.com
-            https://devmastery.com/oop
-            https://devmastery.com/dsa
+            https://cs-tutorial.vercel.app
+            https://cs-tutorial.vercel.app/oop
+            https://cs-tutorial.vercel.app/dsa
           uploadArtifacts: true
           temporaryPublicStorage: true
 

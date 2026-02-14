@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Sitemap location
-Sitemap: https://devmastery.com/sitemap.xml
+Sitemap: https://cs-tutorial.vercel.app/sitemap.xml
 
 # Disallow admin or private pages (if any)
 # Disallow: /admin/

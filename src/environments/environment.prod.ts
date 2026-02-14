@@ -1,9 +1,11 @@
+/** Canonical production URL (also deployed at https://cs-foundation.netlify.app) */
+const siteUrl = 'https://cs-tutorial.vercel.app';
+
 export const environment = {
   production: true,
-  apiUrl: 'https://devmastery.com',
+  apiUrl: siteUrl,
   enableAnalytics: true,
-  /** GA4 Measurement ID – set via build env or replace at deploy */
-  gaMeasurementId: 'G-XXXXXXXXXX',
+  gaMeasurementId: 'G-65CDZ3EV04',
   enableServiceWorker: true,
   pistonApiUrl: 'https://emkc.org/api/v2/piston',
   codeExecutionRateLimit: {
@@ -18,7 +20,7 @@ export const environment = {
   },
   seo: {
     siteName: 'DevMastery',
-    siteUrl: 'https://devmastery.com',
-    defaultImage: 'https://devmastery.com/assets/og-image.png',
+    siteUrl,
+    defaultImage: `${siteUrl}/assets/og-image.png`,
   },
 };

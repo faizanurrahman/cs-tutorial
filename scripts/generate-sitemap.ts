@@ -9,7 +9,7 @@ interface Route {
   lastmod?: string;
 }
 
-const baseUrl = 'https://devmastery.com';
+const baseUrl = 'https://cs-tutorial.vercel.app';
 
 function collectUrls(slug: string, priority: number, changefreq: Route['changefreq'], urls: Route[]) {
   urls.push({ url: slug, priority, changefreq });

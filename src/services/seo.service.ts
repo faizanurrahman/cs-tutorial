@@ -2,6 +2,7 @@ import { Injectable, inject } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
 import { NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs';
+import { environment } from '../environments/environment';
 
 interface SEOData {
   title: string;
@@ -44,7 +45,10 @@ export class SEOService {
    */
   updateSEO(data: Partial<SEOData>) {
     const seoData: SEOData = { ...this.defaultSEO, ...data };
-    const fullUrl = `https://devmastery.com${this.router.url}`;
+    const baseUrl = environment.seo?.siteUrl ?? '';
+    const fullUrl = `${baseUrl.replace(/\/$/, '')}${this.router.url}`;
+    const imageValue = seoData.image ?? this.defaultSEO.image ?? '';
+    const imageUrl = imageValue.startsWith('http') ? imageValue : `${baseUrl.replace(/\/$/, '')}${imageValue.startsWith('/') ? '' : '/'}${imageValue}`;
 
     // Update title
     this.title.setTitle(seoData.title);
@@ -54,16 +58,16 @@ export class SEOService {
       { name: 'description', content: seoData.description },
       {
         name: 'keywords',
-        content: seoData.keywords || this.defaultSEO.keywords,
+        content: (seoData.keywords ?? this.defaultSEO.keywords) ?? '',
       },
-      { name: 'author', content: seoData.author || this.defaultSEO.author },
+      { name: 'author', content: (seoData.author ?? this.defaultSEO.author) ?? '' },
 
       // Open Graph
       { property: 'og:title', content: seoData.title },
       { property: 'og:description', content: seoData.description },
       { property: 'og:type', content: seoData.type || 'article' },
       { property: 'og:url', content: seoData.url || fullUrl },
-      { property: 'og:image', content: seoData.image || this.defaultSEO.image },
+      { property: 'og:image', content: imageUrl },
       { property: 'og:site_name', content: 'DevMastery' },
 
       // Twitter Card
@@ -72,7 +76,7 @@ export class SEOService {
       { name: 'twitter:description', content: seoData.description },
       {
         name: 'twitter:image',
-        content: seoData.image || this.defaultSEO.image,
+        content: imageUrl,
       },
 
       // Article metadata
@@ -184,7 +188,7 @@ export class SEOService {
             name: 'DevMastery',
             logo: {
               '@type': 'ImageObject',
-              url: 'https://devmastery.com/logo.png',
+              url: `${environment.seo?.siteUrl ?? ''}/logo.png`,
             },
           },
         };
@@ -196,7 +200,7 @@ export class SEOService {
             '@type': 'ListItem',
             position: index + 1,
             name: item.name,
-            item: `https://devmastery.com${item.url}`,
+            item: `${environment.seo?.siteUrl ?? ''}${item.url}`,
           })),
         };
 
@@ -224,10 +228,11 @@ export class SEOService {
     let script = document.getElementById(scriptId);
 
     if (!script) {
-      script = document.createElement('script');
-      script.id = scriptId;
-      script.type = 'application/ld+json';
-      document.head.appendChild(script);
+      const newScript = document.createElement('script');
+      newScript.id = scriptId;
+      newScript.type = 'application/ld+json';
+      document.head.appendChild(newScript);
+      script = newScript;
     }
 
     script.textContent = JSON.stringify(data);

@@ -2,73 +2,73 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
   <url>
-    <loc>https://devmastery.com/</loc>
+    <loc>https://cs-tutorial.vercel.app/</loc>
     <lastmod>2026-02-14</lastmod>
     <changefreq>daily</changefreq>
     <priority>1</priority>
   </url>
   <url>
-    <loc>https://devmastery.com/about</loc>
+    <loc>https://cs-tutorial.vercel.app/about</loc>
     <lastmod>2026-02-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://devmastery.com/oop</loc>
+    <loc>https://cs-tutorial.vercel.app/oop</loc>
     <lastmod>2026-02-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://devmastery.com/dsa</loc>
+    <loc>https://cs-tutorial.vercel.app/dsa</loc>
     <lastmod>2026-02-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://devmastery.com/oop/index</loc>
+    <loc>https://cs-tutorial.vercel.app/oop/index</loc>
     <lastmod>2026-02-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://devmastery.com/oop/fundamentals/encapsulation</loc>
+    <loc>https://cs-tutorial.vercel.app/oop/fundamentals/encapsulation</loc>
     <lastmod>2026-02-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://devmastery.com/oop/concepts/classes</loc>
+    <loc>https://cs-tutorial.vercel.app/oop/concepts/classes</loc>
     <lastmod>2026-02-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://devmastery.com/dsa/arrays/intro</loc>
+    <loc>https://cs-tutorial.vercel.app/dsa/arrays/intro</loc>
     <lastmod>2026-02-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://devmastery.com/dsa/arrays/two-pointer</loc>
+    <loc>https://cs-tutorial.vercel.app/dsa/arrays/two-pointer</loc>
     <lastmod>2026-02-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://devmastery.com/dsa/test-visualizers</loc>
+    <loc>https://cs-tutorial.vercel.app/dsa/test-visualizers</loc>
     <lastmod>2026-02-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://devmastery.com/test-components</loc>
+    <loc>https://cs-tutorial.vercel.app/test-components</loc>
     <lastmod>2026-02-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://devmastery.com/test-interactive</loc>
+    <loc>https://cs-tutorial.vercel.app/test-interactive</loc>
     <lastmod>2026-02-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>

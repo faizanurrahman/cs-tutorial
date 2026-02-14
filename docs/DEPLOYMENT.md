@@ -2,8 +2,9 @@
 
 ## Does `git push` deploy automatically?
 
-- **Vercel:** Yes. Pushing to `main` or `master` runs the GitHub Action (`.github/workflows/deploy.yml`), which builds and deploys to **Vercel**. So your production site at https://devmastery.com is updated by this workflow when you push.
-- **Netlify:** This repo has a `netlify.toml` and `deploy:netlify` script, but the GitHub Action does **not** deploy to Netlify. To get Netlify auto-deploy on push, connect this repository in the [Netlify dashboard](https://app.netlify.com) and point the publish directory to `dist/client/browser`. Then **either** use Vercel **or** Netlify as the primary production host (or both, with different domains).
+- **Vercel:** Yes. Pushing to `main` or `master` runs the GitHub Action, which builds and deploys to **Vercel** → **https://cs-tutorial.vercel.app**.
+- **Netlify:** The repo has `netlify.toml`; connect it in the [Netlify dashboard](https://app.netlify.com) and set publish to `dist/client/browser` for auto-deploy → **https://cs-foundation.netlify.app**.
+- **Canonical URL for SEO:** The app uses **https://cs-tutorial.vercel.app** as the canonical origin (sitemap, robots, og:url, canonical link). Both deployments serve the same app; search engines are pointed at the Vercel URL.
 
 ## GitHub Action (`.github/workflows/deploy.yml`)
 
@@ -32,7 +33,7 @@
 - **Meta & OG:** `SEOService` updates title, description, og:*, twitter:card, and canonical on route changes. Defaults and per-page overrides are supported.
 - **Structured data:** `generateStructuredData()` for Article, BreadcrumbList, Course (JSON-LD).
 - **Sitemap:** Run `npm run generate:sitemap` to regenerate `public/sitemap.xml` from `NAVIGATION` (and static routes). The deploy workflow runs this before build, so the built site includes an up-to-date sitemap.
-- **robots.txt:** In `public/robots.txt`; points to `https://devmastery.com/sitemap.xml`. No `Crawl-delay` (not standard; Google ignores it).
+- **robots.txt:** In `public/robots.txt`; points to `https://cs-tutorial.vercel.app/sitemap.xml`. No `Crawl-delay` (not standard; Google ignores it).
 
 ## PWA / Manifest
 
