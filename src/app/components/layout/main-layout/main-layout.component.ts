@@ -26,23 +26,25 @@ import { TocComponent } from '../toc/toc.component';
 ],
   template: `
     <div class="min-h-screen bg-white dark:bg-slate-950 text-gray-900 dark:text-slate-100">
-      <!-- Top Navbar -->
+      <!-- Top Navbar (fixed; stays on scroll) -->
       <app-navbar />
 
       <!-- Mobile Menu Overlay -->
       <app-mobile-menu />
 
-      <!-- Main Grid Layout -->
-      <div class="flex max-w-[1800px] mx-auto relative">
+      <!-- Main Grid Layout (pt-16 = below fixed navbar) -->
+      <div class="flex max-w-[1800px] mx-auto relative pt-16">
         <!-- Left Sidebar (Desktop) -->
         <aside
-          class="hidden lg:block w-[280px] sticky top-16 h-[calc(100vh-4rem)]
-                 overflow-y-auto border-r border-gray-200 dark:border-white/5 bg-gray-50 dark:bg-slate-900/50 dark:backdrop-blur-xl"
+          class="hidden lg:block w-[260px] shrink-0 sticky top-16 h-[calc(100vh-4rem)]
+                 overflow-y-auto overflow-x-hidden
+                 border-r border-slate-200/80 dark:border-white/10
+                 bg-slate-50/80 dark:bg-slate-900/40 backdrop-blur-xl"
         >
           <app-sidebar />
         </aside>
 
-        <!-- Main Content Area (wider max for cinematic hero) -->
+        <!-- Main Content Area -->
         <main class="flex-1 min-w-0 px-4 sm:px-6 lg:px-8 py-8 lg:py-12 bg-white dark:bg-slate-950">
           <div class="max-w-5xl mx-auto text-gray-900 dark:text-slate-100">
             <app-breadcrumbs />
@@ -52,8 +54,10 @@ import { TocComponent } from '../toc/toc.component';
 
         <!-- Right TOC (Desktop XL) -->
         <aside
-          class="hidden xl:block w-[240px] sticky top-16 h-[calc(100vh-4rem)]
-                 overflow-y-auto border-l border-gray-200 dark:border-white/5 bg-gray-50 dark:bg-slate-900/50 dark:backdrop-blur-xl"
+          class="hidden xl:block w-[220px] shrink-0 sticky top-16 h-[calc(100vh-4rem)]
+                 overflow-y-auto overflow-x-hidden
+                 border-l border-slate-200/80 dark:border-white/10
+                 bg-slate-50/80 dark:bg-slate-900/40 backdrop-blur-xl"
         >
           <app-toc />
         </aside>

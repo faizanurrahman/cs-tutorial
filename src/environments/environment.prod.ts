@@ -2,6 +2,8 @@ export const environment = {
   production: true,
   apiUrl: 'https://devmastery.com',
   enableAnalytics: true,
+  /** GA4 Measurement ID – set via build env or replace at deploy */
+  gaMeasurementId: 'G-XXXXXXXXXX',
   enableServiceWorker: true,
   pistonApiUrl: 'https://emkc.org/api/v2/piston',
   codeExecutionRateLimit: {

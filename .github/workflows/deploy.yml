@@ -1,12 +1,16 @@
 name: Deploy to Production
 
+# Push to main (or master) deploys to Vercel via this workflow.
+# For Netlify auto-deploy: connect this repo in Netlify dashboard (separate from this workflow).
 on:
   push:
     branches:
       - main
+      - master
   pull_request:
     branches:
       - main
+      - master
 
 jobs:
   build-and-deploy:
@@ -54,7 +58,7 @@ jobs:
           temporaryPublicStorage: true
 
       - name: Deploy to Vercel
-        if: github.ref == 'refs/heads/main'
+        if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
         uses: amondnet/vercel-action@v20
         with:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}

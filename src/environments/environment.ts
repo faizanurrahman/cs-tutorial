@@ -2,6 +2,8 @@ export const environment = {
   production: false,
   apiUrl: 'http://localhost:4200',
   enableAnalytics: false,
+  /** Set in production; e.g. G-XXXXXXXXXX from Google Analytics 4 */
+  gaMeasurementId: '',
   enableServiceWorker: false,
   pistonApiUrl: 'https://emkc.org/api/v2/piston',
   codeExecutionRateLimit: {

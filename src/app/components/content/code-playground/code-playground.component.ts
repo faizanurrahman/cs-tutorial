@@ -55,7 +55,7 @@ import { CodeExecutionService } from '../../../../services/code-execution.servic
                 <span>Copy</span>
               }
             </button>
-            <span class="text-xs text-slate-500">
+            <span class="text-xs text-slate-500 dark:text-slate-400">
               {{ remainingAttempts() }}/5 runs
             </span>
             <button
@@ -167,7 +167,7 @@ import { CodeExecutionService } from '../../../../services/code-execution.servic
             @if (!output() && !executionError() && !running()) {
               <!-- Empty State -->
               <div
-                class="flex flex-col items-center justify-center h-full text-slate-500"
+                class="flex flex-col items-center justify-center h-full text-slate-500 dark:text-slate-400"
               >
                 <svg
                   class="w-12 h-12 mb-3"
@@ -216,8 +216,8 @@ import { CodeExecutionService } from '../../../../services/code-execution.servic
       </div>
 
       @if (description()) {
-        <div class="bg-white/5 px-4 py-2 border-t border-white/5">
-          <p class="text-xs text-slate-400">
+        <div class="bg-slate-50/80 dark:bg-white/5 px-4 py-2 border-t border-slate-200/80 dark:border-white/5">
+          <p class="text-xs text-slate-500 dark:text-slate-400">
             {{ description() }}
           </p>
         </div>
@@ -262,6 +262,7 @@ export class CodePlaygroundComponent implements AfterViewInit, OnDestroy {
 
   private editor: any = null;
   private monaco: any = null;
+  private themeObserver: MutationObserver | null = null;
 
   async ngAfterViewInit() {
     await this.initializeMonaco();
@@ -270,6 +271,7 @@ export class CodePlaygroundComponent implements AfterViewInit, OnDestroy {
 
   ngOnDestroy() {
     this.editor?.dispose();
+    this.themeObserver?.disconnect();
   }
 
   private async initializeMonaco() {
@@ -421,10 +423,17 @@ export class CodePlaygroundComponent implements AfterViewInit, OnDestroy {
   }
 
   private watchThemeChanges() {
+    const updateTheme = () => {
+      const theme = this.getEditorTheme();
+      this.monaco?.editor.setTheme(theme);
+    };
     const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-    mediaQuery.addEventListener('change', (e) => {
-      this.monaco?.editor.setTheme(e.matches ? 'vs-dark' : 'vs');
+    mediaQuery.addEventListener('change', updateTheme);
+    // Sync with app dark-mode toggle (class on <html>)
+    this.themeObserver = new MutationObserver((mutations) => {
+      if (mutations.some((m) => m.attributeName === 'class')) updateTheme();
     });
+    this.themeObserver.observe(document.documentElement, { attributes: true });
   }
 
   /** Cached CDN load so multiple code-playground instances share one load. */

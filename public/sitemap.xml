@@ -8,6 +8,12 @@
     <priority>1</priority>
   </url>
   <url>
+    <loc>https://devmastery.com/about</loc>
+    <lastmod>2026-02-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://devmastery.com/oop</loc>
     <lastmod>2026-02-14</lastmod>
     <changefreq>weekly</changefreq>
@@ -20,97 +26,37 @@
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://devmastery.com/spring-boot</loc>
-    <lastmod>2026-02-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://devmastery.com/system-design</loc>
-    <lastmod>2026-02-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://devmastery.com/1-oop/index</loc>
+    <loc>https://devmastery.com/oop/index</loc>
     <lastmod>2026-02-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://devmastery.com/1-oop/1-fundamentals/index</loc>
+    <loc>https://devmastery.com/oop/fundamentals/encapsulation</loc>
     <lastmod>2026-02-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://devmastery.com/1-oop/1-fundamentals/encapsulation</loc>
+    <loc>https://devmastery.com/oop/concepts/classes</loc>
     <lastmod>2026-02-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://devmastery.com/1-oop/1-concepts/index</loc>
+    <loc>https://devmastery.com/dsa/arrays/intro</loc>
     <lastmod>2026-02-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://devmastery.com/1-oop/1-concepts/classes</loc>
+    <loc>https://devmastery.com/dsa/arrays/two-pointer</loc>
     <lastmod>2026-02-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://devmastery.com/2-dsa/1-arrays/intro</loc>
-    <lastmod>2026-02-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://devmastery.com/2-dsa/1-arrays/intro</loc>
-    <lastmod>2026-02-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://devmastery.com/2-dsa/1-arrays/intro</loc>
-    <lastmod>2026-02-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://devmastery.com/2-dsa/1-arrays/two-pointer</loc>
-    <lastmod>2026-02-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://devmastery.com/2-dsa/test-visualizers</loc>
-    <lastmod>2026-02-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://devmastery.com/3-spring-boot/index</loc>
-    <lastmod>2026-02-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://devmastery.com/3-spring-boot/1-getting-started/index</loc>
-    <lastmod>2026-02-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://devmastery.com/4-system-design/index</loc>
-    <lastmod>2026-02-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://devmastery.com/4-system-design/1-fundamentals/index</loc>
+    <loc>https://devmastery.com/dsa/test-visualizers</loc>
     <lastmod>2026-02-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>

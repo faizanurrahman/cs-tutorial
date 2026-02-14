@@ -34,8 +34,30 @@
     @apply bg-slate-950 text-slate-300;
   }
 
+  /* Light mode: selection with dark text */
   *::selection {
-    @apply bg-indigo-500/30 text-indigo-200;
+    background-color: rgba(99, 102, 241, 0.35);
+    color: #1e1b4b;
+  }
+
+  /* Dark mode: selection with light text */
+  .dark *::selection {
+    background-color: rgba(129, 140, 248, 0.5);
+    color: #e0e7ff;
+  }
+
+  /* Code/terminal: ensure selection stays readable */
+  pre::selection,
+  code::selection,
+  .font-mono::selection {
+    background-color: rgba(99, 102, 241, 0.4);
+    color: #1e1b4b;
+  }
+  .dark pre::selection,
+  .dark code::selection,
+  .dark .font-mono::selection {
+    background-color: rgba(129, 140, 248, 0.55);
+    color: #c7d2fe;
   }
 }
 

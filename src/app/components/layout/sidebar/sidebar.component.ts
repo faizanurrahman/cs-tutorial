@@ -1,4 +1,3 @@
-
 import { Component, inject } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { NavigationService } from '../../../services/navigation.service';
@@ -8,66 +7,56 @@ import { NavigationService } from '../../../services/navigation.service';
   standalone: true,
   imports: [RouterModule],
   template: `
-    <nav class="p-6">
-      <!-- Navigation Tree -->
-      <ul class="space-y-1">
+    <nav class="py-6 px-4">
+      <p class="text-[11px] font-semibold uppercase tracking-wider text-slate-400 dark:text-slate-500 px-3 mb-4">
+        Contents
+      </p>
+      <ul class="space-y-0.5">
         @for (section of navService.navTree(); track section.slug) {
           <li>
-            <!-- Section Header: title links to section, chevron toggles -->
+            <!-- Section row: link + expand -->
             <div
-              class="w-full flex items-center justify-between px-3 py-2 rounded-md
-                     text-sm font-semibold text-gray-900 dark:text-white
-                     hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+              class="group flex items-center gap-1 rounded-lg transition-colors"
             >
               <a
                 [routerLink]="section.slug"
-                routerLinkActive="text-brand-600 dark:text-brand-400"
-                class="flex-1 min-w-0 truncate hover:text-brand-600 dark:hover:text-brand-400"
+                routerLinkActive="text-indigo-600 dark:text-indigo-400 font-semibold"
+                class="flex-1 min-w-0 py-2.5 px-3 rounded-lg text-sm font-medium
+                       text-slate-700 dark:text-slate-300
+                       hover:bg-slate-100 dark:hover:bg-white/5
+                       hover:text-slate-900 dark:hover:text-slate-100
+                       transition-colors truncate"
                 (click)="$event.stopPropagation()"
               >
                 {{ section.title }}
               </a>
-              <button
-                (click)="navService.toggleExpanded(section); $event.preventDefault()"
-                type="button"
-                class="p-1 -m-1 rounded hover:bg-gray-200 dark:hover:bg-gray-700 transition-transform"
-                [class.rotate-90]="section.expanded"
-                aria-label="Toggle section"
-              >
-                <svg
-                  class="w-4 h-4"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
+              @if (section.children && section.children.length > 0) {
+                <button
+                  (click)="navService.toggleExpanded(section); $event.preventDefault()"
+                  type="button"
+                  class="shrink-0 p-1.5 rounded-md text-slate-400 hover:text-slate-600 dark:hover:text-slate-300 hover:bg-slate-100 dark:hover:bg-white/5 transition-colors"
+                  [class.rotate-90]="section.expanded"
+                  aria-label="Toggle section"
                 >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M9 5l7 7-7 7"
-                  />
-                </svg>
-              </button>
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                  </svg>
+                </button>
+              }
             </div>
 
-            <!-- Section Children -->
             @if (section.expanded && section.children) {
-              <ul
-                class="ml-3 mt-1 space-y-1 border-l-2 border-gray-200 dark:border-gray-700 pl-3"
-              >
+              <ul class="ml-2 mt-0.5 pl-4 border-l-2 border-slate-200 dark:border-slate-700/80 space-y-0.5">
                 @for (item of section.children; track item.slug) {
                   <li>
                     @if (item.children && item.children.length > 0) {
-                      <!-- Category with children: title links, chevron toggles -->
-                      <div
-                        class="w-full flex items-center justify-between px-3 py-1.5 rounded-md
-                               text-sm font-medium text-gray-700 dark:text-gray-300
-                               hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
-                      >
+                      <div class="group flex items-center gap-1">
                         <a
                           [routerLink]="item.slug"
-                          routerLinkActive="text-brand-600 dark:text-brand-400 font-medium"
-                          class="flex-1 min-w-0 truncate hover:text-gray-900 dark:hover:text-white"
+                          routerLinkActive="text-indigo-600 dark:text-indigo-400 font-medium"
+                          class="flex-1 min-w-0 py-2 px-3 rounded-lg text-sm
+                                 text-slate-600 dark:text-slate-400
+                                 hover:bg-slate-100 dark:hover:bg-white/5 hover:text-slate-900 dark:hover:text-slate-100 transition-colors truncate"
                           (click)="$event.stopPropagation()"
                         >
                           {{ item.title }}
@@ -75,39 +64,27 @@ import { NavigationService } from '../../../services/navigation.service';
                         <button
                           (click)="navService.toggleExpanded(item); $event.preventDefault()"
                           type="button"
-                          class="p-0.5 -m-0.5 rounded hover:bg-gray-200 dark:hover:bg-gray-700 transition-transform"
+                          class="shrink-0 p-1 rounded text-slate-400 hover:text-slate-600 dark:hover:text-slate-300"
                           [class.rotate-90]="item.expanded"
-                          aria-label="Toggle category"
+                          aria-label="Toggle"
                         >
-                          <svg
-                            class="w-3 h-3"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                          >
-                            <path
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              stroke-width="2"
-                              d="M9 5l7 7-7 7"
-                            />
+                          <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                           </svg>
                         </button>
                       </div>
-
-                      <!-- Nested children -->
                       @if (item.expanded) {
-                        <ul class="ml-3 mt-1 space-y-1">
+                        <ul class="ml-2 space-y-0.5">
                           @for (child of item.children; track child.slug) {
                             <li>
                               <a
                                 [routerLink]="child.slug"
-                                routerLinkActive="bg-brand-100 dark:bg-brand-900/30 text-brand-700 dark:text-brand-400 font-medium"
+                                routerLinkActive="sidebar-link-active"
                                 [routerLinkActiveOptions]="{ exact: true }"
-                                class="block px-3 py-1.5 rounded-md text-sm
-                                       text-gray-600 dark:text-gray-400
-                                       hover:bg-gray-100 dark:hover:bg-gray-800
-                                       hover:text-gray-900 dark:hover:text-white
+                                class="block py-1.5 px-3 rounded-lg text-sm
+                                       text-slate-600 dark:text-slate-400
+                                       hover:bg-slate-100 dark:hover:bg-white/5
+                                       hover:text-slate-900 dark:hover:text-slate-100
                                        transition-colors"
                               >
                                 {{ child.title }}
@@ -117,16 +94,14 @@ import { NavigationService } from '../../../services/navigation.service';
                         </ul>
                       }
                     } @else {
-                      <!-- Direct page link -->
                       <a
                         [routerLink]="item.slug"
-                        routerLinkActive="bg-brand-100 dark:bg-brand-900/30 text-brand-700 dark:text-brand-400 font-medium"
+                        routerLinkActive="sidebar-link-active"
                         [routerLinkActiveOptions]="{ exact: true }"
-                        class="block px-3 py-1.5 rounded-md text-sm
-                               text-gray-600 dark:text-gray-400
-                               hover:bg-gray-100 dark:hover:bg-gray-800
-                               hover:text-gray-900 dark:hover:text-white
-                               transition-colors"
+                        class="block py-2 px-3 rounded-lg text-sm
+                               text-slate-600 dark:text-slate-400
+                               hover:bg-slate-100 dark:hover:bg-white/5
+                               hover:text-slate-900 dark:hover:text-slate-100 transition-colors"
                       >
                         {{ item.title }}
                       </a>
@@ -139,9 +114,8 @@ import { NavigationService } from '../../../services/navigation.service';
         }
       </ul>
 
-      <!-- Version Info (Optional) -->
-      <div class="mt-8 pt-6 border-t border-gray-200 dark:border-gray-700">
-        <p class="text-xs text-gray-500 dark:text-gray-400">Version 1.0.0</p>
+      <div class="mt-8 pt-4 border-t border-slate-200/80 dark:border-slate-700/50">
+        <p class="text-xs text-slate-400 dark:text-slate-500 px-3">v1.0.0</p>
       </div>
     </nav>
   `,
@@ -149,6 +123,18 @@ import { NavigationService } from '../../../services/navigation.service';
     `
       :host {
         display: block;
+      }
+      :host ::ng-deep .sidebar-link-active {
+        background: rgba(99, 102, 241, 0.1);
+        color: rgb(99, 102, 241);
+        font-weight: 500;
+        border-left: 2px solid rgb(99, 102, 241);
+        margin-left: -2px;
+        padding-left: calc(0.75rem + 2px);
+      }
+      :host-context(.dark) ::ng-deep .sidebar-link-active {
+        background: rgba(129, 140, 248, 0.15);
+        color: rgb(165, 180, 252);
       }
     `,
   ],

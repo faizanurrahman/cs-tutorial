@@ -18,30 +18,30 @@ export class AnalyticsService {
   private enabled = environment.enableAnalytics;
 
   constructor() {
-    if (this.enabled) {
+    if (this.enabled && environment.gaMeasurementId) {
       this.initializeGoogleAnalytics();
       this.trackPageViews();
     }
   }
 
   /**
-   * Initialize Google Analytics
+   * Initialize Google Analytics (only when gaMeasurementId is set)
    */
   private initializeGoogleAnalytics() {
-    // Load gtag script
+    const id = environment.gaMeasurementId;
+    if (!id) return;
     const script = document.createElement('script');
     script.async = true;
-    script.src = 'https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX';
+    script.src = `https://www.googletagmanager.com/gtag/js?id=${id}`;
     document.head.appendChild(script);
 
-    // Initialize dataLayer
     window.dataLayer = window.dataLayer || [];
     window.gtag = function () {
       window.dataLayer?.push(arguments);
     };
     window.gtag('js', new Date());
-    window.gtag('config', 'G-XXXXXXXXXX', {
-      send_page_view: false, // We'll handle this manually
+    window.gtag('config', id, {
+      send_page_view: false,
     });
   }
 
@@ -60,9 +60,9 @@ export class AnalyticsService {
    * Track individual page view
    */
   trackPageView(url: string) {
-    if (!this.enabled || !window.gtag) return;
+    if (!this.enabled || !window.gtag || !environment.gaMeasurementId) return;
 
-    window.gtag('config', 'G-XXXXXXXXXX', {
+    window.gtag('config', environment.gaMeasurementId, {
       page_path: url,
     });
   }
