@@ -29,7 +29,7 @@ import { LandingLayoutComponent } from '../components/layout/landing-layout/land
             Start Learning
           </a>
           <a
-            href="https://github.com/yourusername/cs-tutorial-platform"
+            href="https://github.com/faizanurrahman/cs-tutorial"
             target="_blank"
             class="px-6 py-3 bg-gray-200 dark:bg-gray-700 hover:bg-gray-300
                     dark:hover:bg-gray-600 text-gray-900 dark:text-white

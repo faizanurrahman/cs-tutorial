@@ -173,7 +173,7 @@ import { ThemeService } from '../../../services/theme.service';
 
             <!-- GitHub Link -->
             <a
-              href="https://github.com/yourusername/cs-tutorial-platform"
+              href="https://github.com/faizanurrahman/cs-tutorial"
               target="_blank"
               rel="noopener noreferrer"
               class="hidden sm:block p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800
