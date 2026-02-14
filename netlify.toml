@@ -1,0 +1,16 @@
+# Netlify config for Angular SPA
+# https://docs.netlify.com/configure-builds/file-based-configuration/
+
+[build]
+  command = "npm run build"
+  publish = "dist/client/browser"
+
+# SPA: serve index.html for all routes (client-side routing)
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Node version (optional; Netlify often defaults to 18)
+[build.environment]
+  NODE_VERSION = "20"
